@@ -1,0 +1,50 @@
+🎥 NOTE TECHNIQUE — LE LAC (révisée selon configuration Cité du Film)
+──────────────────────────────────────────────
+
+📸 IMAGE
+Caméra principale : Sony FX6 – plein format, rendu organique proche pellicule
+Objectifs : DZO Vespid T2.1 — 25 / 35 / 50 / 75 / 90 mm macro
+Format : 4K RAW — 1.85 — 25 fps
+Optiques clés par scène :
+• Bar (hiver) : 50–75 mm — intimité, chaleur de la flamme
+• Lac (été) : 35 mm — plan contemplatif, symétrie, silence
+• Clairière : 25 mm — vie, respiration, tension latente
+• Errance : 90 mm macro — matière, herbes, sang, isolement
+• Eau miroir : 35–50 mm — reflet, pureté, disparition
+• Final : 75 mm — flou poétique, introspection
+
+Drone complémentaire : DJI Inspire 3 (plans verticaux lents, symétrie lac).
+Mouvement : plans longs (10–20 s), glissements lents, cadres fixes traversés par le vent/l’eau.
+Lumière image : LUT douce DaVinci Resolve ; exposition fine ; flou poétique contrôlé.
+
+💡 LUMIÈRE
+Sources : Nanlite FS‑150B ×3 + réflecteurs Manfrotto ; panneau LED souple bicolore pour les intérieurs.
+Approche : Été vert/or (diffusion soie, contre‑jours légers) ; Hiver gris/bleu (contraste doux).
+Intention : beauté maîtrisée — peau, eau, matière, reflets, brume ; halo doré sur peau humide ; grain constant sans ostentation.
+
+🎧 SON
+Captation : MixPre‑6 II + micros DPA 2017 ; HF Deity pour dialogues ; Tentacle Sync ; casque HD25.
+Ambiances : hydrophones Aquarian ; binaural ; perche pour plans intérieurs.
+Grammaire : vent / souffle / eau / métal — morphing acoustique réel → mémoire.
+Mixage : Pro Tools + Neumann U87 + Genelec 5.1 ; 5.1 + binaural ; silence comme tension physique.
+
+🎬 ACCESSOIRES & SÉCURITÉ
+Accessoires
+• Café (2015) : tasses porcelaine, cuillères métal, menu papier, smartphone noir, manteau, écharpe, journal.
+• Lac / Clairière (années 1990) : walkman, jeu de cartes, Zippo, bouteille verre, serviette, shorts 90s, sandales,
+  chemise à carreaux (Victor), t‑shirt blanc (Mathias).
+Technique : ND variable, polar, diffusion soie, SSD / V‑Lock, DIT 3‑2‑1, trépied, matte box, perche HF,
+  câbles étanches, gants néoprène, sacs étanches.
+Sécurité eau : talkies, périmètre rive, couvertures de survie, thermos, plaids, balises LED.
+Raccords : doublons objets “son” (cuillères, briquets, cartes) + photos continuité.
+
+🎞️ NOTE TECHNIQUE IMAGE — Filmer Mathias (Maxime)
+Intention : présence solaire plutôt que psychologie ; la caméra “tombe amoureuse” en silence.
+Caméra : 35 / 50 / 90 mm macro + drone Inspire 3 ; glissements lents ; aucun mouvement explicatif.
+Lumière : naturelle ; diffusion soie ; contre‑jour doux ; halo doré (soir) / bleu froid (nuit).
+Rythme & montage : plans longs ; coupes guidées par le son et le vent ; chaque plan doit survivre seul.
+
+🔁 POST‑PRODUCTION
+Image : DaVinci Resolve Studio + Eizo CG319X — étalonnage doux et naturel.
+Son : Pro Tools + Neumann U87 + Genelec 5.1 — mix immersif et spatial.
+Master : 4K ProRes HQ + DCP 5.1 / binaural.

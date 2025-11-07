@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LE LAC — Dossier complet (accès restreint)</title>
+<meta name="theme-color" content="#0b0d12">
+<style>
+:root{--ink:#fff;--muted:#cfd2d9;--line:rgba(255,255,255,.12);--blue:#2563eb;--blue3:#1e40af;--bg:#0b0d12;}
+*{box-sizing:border-box} html,body{margin:0;padding:0}
+body{color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.7;background:#0b0d12;}
+.container{max-width:1200px;margin:0 auto;padding:28px 18px}
+.header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logout{display:none}
+.logout button{padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:transparent;color:#fff;cursor:pointer}
+.grp>summary{cursor:pointer;padding:16px 18px;background:var(--blue);color:#fff;font-weight:800;border-bottom:1px solid rgba(0,0,0,.1)}
+.sub details>summary{cursor:pointer;padding:12px 14px;background:var(--blue3);color:#fff;font-weight:700;border-radius:10px;margin-top:10px}
+.body{padding:14px 18px;border-left:2px solid var(--line);margin-top:8px;background:rgba(0,0,0,.25);border-radius:12px}
+pre{white-space:pre-wrap;word-wrap:break-word;background:rgba(255,255,255,.04);border:1px solid var(--line);padding:12px;border-radius:10px}
+#gate{position:fixed;inset:0;background:radial-gradient(1200px 800px at 30% 10%,#14203a 0%,#0b0d12 55%,#0b0d12 100%);display:flex;align-items:center;justify-content:center;z-index:10}
+#gate .panel{width:min(520px,92vw);background:rgba(0,0,0,.55);border:1px solid var(--line);border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.45);padding:22px}
+#gate h2{margin:0 0 8px 0;font-size:22px}
+#gate p{color:var(--muted);margin-top:0}
+#gate label{display:block;font-weight:700;margin:10px 0 6px}
+#gate input{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:#0f1320;color:#fff}
+#gate button{margin-top:14px;width:100%;padding:12px 14px;border-radius:12px;border:0;background:var(--blue);color:#fff;font-weight:800;cursor:pointer}
+#gate .err{color:#ffb4b4;margin-top:8px;min-height:20px}
+#gate .hint{font-size:12px;color:#9fb0d0;margin-top:8px}
+</style>
+</head>
+<body>
+<main class="container">
+  <div class="header">
+    <div>
+      <h1 style="margin:0">LE LAC</h1>
+      <p style="margin:.25rem 0 0 0;opacity:.85">Un film de Vincent Letort — NE PAS PARTAGER</p>
+    </div>
+    <div class="logout"><button id="logoutBtn" title="Fermer l'accès sur cet appareil">Déconnexion</button></div>
+  </div>
+  <!-- @@INJECT_GROUPS_HERE -->
+  <footer style="opacity:.7;margin-top:28px;font-size:13px">© Spectra Media — LE LAC</footer>
+</main>
+
+<!-- ACCESS GATE -->
+<div id="gate" hidden>
+  <div class="panel">
+    <h2>Accès restreint</h2>
+    <p>Entrez un email autorisé et le mot de passe. L'accès restera ouvert sur cet appareil.</p>
+    <label>Email autorisé</label>
+    <input id="g_email" type="email" placeholder="email" autocomplete="off" spellcheck="false">
+    <label>Mot de passe</label>
+    <input id="g_pass" type="password" placeholder="mot de passe" autocomplete="off">
+    <button id="g_btn">Entrer</button>
+    <div class="err" id="g_err"></div>
+    <div class="hint">Besoin d'aide ? Contactez <b>Vincent</b>.</div>
+  </div>
+</div>
+
+<script>
+/* @@ACCESS_CONFIG */
+const KEY="lac_access_ok_v2";
+function toHex(buffer){return Array.prototype.map.call(new Uint8Array(buffer), x => ('00'+x.toString(16)).slice(-2)).join('');}
+async function sha256(text){const enc=new TextEncoder();const buf=await crypto.subtle.digest('SHA-256', enc.encode(text));return toHex(buf);}
+function showLogout(){document.querySelector('.logout').style.display='block';}
+function doLogout(){localStorage.removeItem(KEY);location.reload();}
+(async () => {
+  if(localStorage.getItem(KEY)==="yes"){ showLogout(); document.getElementById('gate')?.remove(); return; }
+  document.getElementById('gate').hidden=false;
+  document.getElementById('logoutBtn').addEventListener('click', doLogout);
+  const btn=document.getElementById('g_btn'), emailI=document.getElementById('g_email'), passI=document.getElementById('g_pass'), err=document.getElementById('g_err');
+  btn.addEventListener('click', async () => {
+    err.textContent="";
+    const email=(emailI.value||"").trim().toLowerCase();
+    const pass=(passI.value||"");
+    if(!email||!pass){ err.textContent="Email et mot de passe requis."; return; }
+    if(!ALLOWED_EMAILS.map(e=>e.toLowerCase()).includes(email)){ err.textContent="Email non autorisé."; return; }
+    const h=await sha256(pass);
+    if(h!==PASS_HASH){ err.textContent="Mot de passe invalide."; return; }
+    localStorage.setItem(KEY,"yes");
+    document.getElementById('gate').remove();
+    showLogout();
+  });
+})();
+</script>
+</body>
+</html>
