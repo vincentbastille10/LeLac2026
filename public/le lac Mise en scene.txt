@@ -1,24 +1,23 @@
-<details class="grp" open>
-  <summary>🎥 Intention de mise en scène</summary>
+
+🎥 Intention de mise en scène</summary
   
 
 Le film s’inscrit dans une lenteur assumée, presque méditative. Chaque plan laisse au spectateur le temps d’entrer dans la matière : l’eau, la lumière, le souffle. Les silences ont la même valeur dramatique que les sons. Le récit progresse par résonance, non par action.</p>
 
-  <p><b>Caméra</b> — Les mouvements sont rares, toujours organiques : glissements lents, travellings discrets, respirations à l’épaule. L’image respire avec les personnages. La caméra observe plus qu’elle ne raconte.</p>
+Les mouvements sont rares, toujours organiques : glissements lents, travellings discrets, respirations à l’épaule. L’image respire avec les personnages. La caméra observe plus qu’elle ne raconte.
 
-  <p><b>Optiques & texture</b> —  
+Optiques & texture
   Utilisation privilégiée du <b>35 mm</b> et du <b>50 mm fixe</b> pour leur rendu proche du regard humain.  
   Diffusion douce (Tiffen Black Pro-Mist 1/4) et filtres ND pour préserver les hautes lumières au bord de l’eau.  
   Polarisation légère sur les scènes du lac afin d’accentuer la dimension miroir.  
-  Colorimétrie inspirée du cinéma argentique (Kodak 5219), avec une dominante bleutée pour l’hiver et dorée pour l’été.</p>
+  Colorimétrie inspirée du cinéma argentique (Kodak 5219), avec une dominante bleutée pour l’hiver et dorée pour l’été.
 
-  <p><b>Son</b> — Le design sonore est moteur du récit : le souffle du briquet, les clapotis, la respiration, deviennent leitmotiv. La valse finale (inspiration Satie / Portishead / LTJ Bukem) clôt le cycle par un effacement du monde.</p>
+  Le design sonore est moteur du récit : le souffle du briquet, les clapotis, la respiration, deviennent leitmotiv. 
 
-  <p><b>Lumière</b> — Recherche d’une lumière <i>pré-narrative</i> : la sensation avant la compréhension.  
+ Recherche d’une lumière : la sensation avant la compréhension.  
   Les reflets d’eau, la brume, le contre-jour servent à exprimer l’incertitude du souvenir.  
-  Chaque changement de saison correspond à une mutation intérieure de l’image : du froid métallique à la chaleur diluée.</p>
+  Chaque changement de saison correspond à une mutation intérieure de l’image : du froid métallique à la chaleur diluée.
 
-  <p><b>Structure visuelle</b> — La mise en scène repose sur des motifs récurrents (miroir, eau, souffle, clope, reflet) agencés selon un principe de symétrie.  
+La mise en scène repose sur des motifs récurrents (miroir, eau, souffle, clope, reflet) agencés selon un principe de symétrie.  
   L’image devient mémoire, la mémoire devient matière.  
   À la fin, tout se replie dans le reflet — celui du lac ou du bar, impossible à distinguer.
-</details>
