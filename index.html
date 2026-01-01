@@ -1,40 +1,536 @@
-<!doctype html><html lang='fr'><meta charset='utf-8'><body style='background:#0b0d12;color:white;font-family:sans-serif;padding:20px'><h1>LE LAC — Dossier</h1>
-    <details style='margin:8px 0;padding:10px;border:1px solid #333;border-radius:10px;'>
-      <summary style='cursor:pointer;font-weight:bold;color:#4ea4ff'>access.txt</summary>
-      <pre style='white-space:pre-wrap'>email=vincentbastille100@gmail.com
-password=lac26
-</pre>
-    </details>
-    <details style='margin:8px 0;padding:10px;border:1px solid #333;border-radius:10px;'>
-      <summary style='cursor:pointer;font-weight:bold;color:#4ea4ff'>le lac Mise en scene.txt</summary>
-      <pre style='white-space:pre-wrap'>&lt;details class=&quot;grp&quot; open&gt;
-  &lt;summary&gt;🎥 Intention de mise en scène&lt;/summary&gt;
-  
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LE LAC — Dossier</title>
+  <style>
+    :root{
+      --bg0:#070910;
+      --bg1:#0b0d12;
+      --card:#0f1420cc;
+      --card2:#0f1420;
+      --text:#e7eefc;
+      --muted:#a7b4cf;
+      --border:rgba(160,180,220,.18);
+      --border2:rgba(160,180,220,.28);
+      --shadow: 0 30px 80px rgba(0,0,0,.55);
+      --shadow2: 0 12px 30px rgba(0,0,0,.35);
+      --blue:#4ea4ff;
+      --cyan:#68f0ff;
+      --pink:#ff5bd6;
+      --green:#41ffb4;
+      --yellow:#ffd56a;
+      --radius:18px;
+      --radius2:26px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
 
-Le film s’inscrit dans une lenteur assumée, presque méditative. Chaque plan laisse au spectateur le temps d’entrer dans la matière : l’eau, la lumière, le souffle. Les silences ont la même valeur dramatique que les sons. Le récit progresse par résonance, non par action.&lt;/p&gt;
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family:var(--sans);
+      color:var(--text);
+      background:
+        radial-gradient(1200px 800px at 12% 8%, rgba(78,164,255,.18), transparent 60%),
+        radial-gradient(900px 700px at 80% 20%, rgba(255,91,214,.12), transparent 55%),
+        radial-gradient(900px 700px at 70% 80%, rgba(65,255,180,.10), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      line-height:1.45;
+    }
 
-  &lt;p&gt;&lt;b&gt;Caméra&lt;/b&gt; — Les mouvements sont rares, toujours organiques : glissements lents, travellings discrets, respirations à l’épaule. L’image respire avec les personnages. La caméra observe plus qu’elle ne raconte.&lt;/p&gt;
+    a{ color:inherit; }
+    .wrap{
+      max-width: 1180px;
+      margin: 26px auto 60px;
+      padding: 0 18px;
+      display:grid;
+      grid-template-columns: 300px 1fr;
+      gap: 18px;
+      align-items:start;
+    }
 
-  &lt;p&gt;&lt;b&gt;Optiques &amp; texture&lt;/b&gt; —  
-  Utilisation privilégiée du &lt;b&gt;35 mm&lt;/b&gt; et du &lt;b&gt;50 mm fixe&lt;/b&gt; pour leur rendu proche du regard humain.  
-  Diffusion douce (Tiffen Black Pro-Mist 1/4) et filtres ND pour préserver les hautes lumières au bord de l’eau.  
-  Polarisation légère sur les scènes du lac afin d’accentuer la dimension miroir.  
-  Colorimétrie inspirée du cinéma argentique (Kodak 5219), avec une dominante bleutée pour l’hiver et dorée pour l’été.&lt;/p&gt;
+    @media (max-width: 980px){
+      .wrap{ grid-template-columns: 1fr; }
+    }
 
-  &lt;p&gt;&lt;b&gt;Son&lt;/b&gt; — Le design sonore est moteur du récit : le souffle du briquet, les clapotis, la respiration, deviennent leitmotiv. La valse finale (inspiration Satie / Portishead / LTJ Bukem) clôt le cycle par un effacement du monde.&lt;/p&gt;
+    /* HEADER */
+    .hero{
+      grid-column: 1 / -1;
+      border:1px solid var(--border);
+      border-radius: var(--radius2);
+      background:
+        radial-gradient(circle at 15% 15%, rgba(78,164,255,.22), transparent 55%),
+        radial-gradient(circle at 80% 30%, rgba(255,91,214,.12), transparent 55%),
+        linear-gradient(180deg, rgba(15,20,32,.86), rgba(15,20,32,.55));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        linear-gradient(120deg, rgba(78,164,255,.0), rgba(78,164,255,.35), rgba(255,91,214,.20), rgba(65,255,180,.25), rgba(78,164,255,.0));
+      opacity:.35;
+      filter: blur(30px);
+      pointer-events:none;
+    }
+    .hero-inner{
+      position:relative;
+      padding: 18px 18px 16px;
+      display:flex;
+      justify-content:space-between;
+      gap: 12px;
+      flex-wrap:wrap;
+      align-items:flex-end;
+    }
+    .title{
+      display:flex; flex-direction:column; gap:6px;
+      min-width: 260px;
+    }
+    h1{
+      margin:0;
+      font-size: 28px;
+      letter-spacing:.4px;
+    }
+    .sub{
+      margin:0;
+      color:var(--muted);
+      font-size: 14px;
+      max-width: 760px;
+    }
+    .tags{
+      display:flex; flex-wrap:wrap; gap:8px;
+      justify-content:flex-end;
+    }
+    .tag{
+      font-size:12px;
+      padding:6px 10px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background: rgba(11,13,18,.55);
+      color: var(--text);
+      backdrop-filter: blur(10px);
+    }
+    .tag b{ color: var(--blue); font-weight:600; }
+    .danger{
+      border-color: rgba(255,91,214,.35);
+      background: rgba(255,91,214,.08);
+    }
 
-  &lt;p&gt;&lt;b&gt;Lumière&lt;/b&gt; — Recherche d’une lumière &lt;i&gt;pré-narrative&lt;/i&gt; : la sensation avant la compréhension.  
-  Les reflets d’eau, la brume, le contre-jour servent à exprimer l’incertitude du souvenir.  
-  Chaque changement de saison correspond à une mutation intérieure de l’image : du froid métallique à la chaleur diluée.&lt;/p&gt;
+    /* SIDEBAR */
+    .side{
+      position: sticky;
+      top: 16px;
+      border:1px solid var(--border);
+      border-radius: var(--radius2);
+      background: rgba(15,20,32,.55);
+      box-shadow: var(--shadow2);
+      overflow:hidden;
+    }
+    @media (max-width: 980px){
+      .side{ position:relative; top:auto; }
+    }
+    .side-head{
+      padding:14px 14px 10px;
+      border-bottom:1px solid var(--border);
+      background:
+        radial-gradient(circle at 20% 20%, rgba(78,164,255,.16), transparent 55%),
+        linear-gradient(180deg, rgba(15,20,32,.85), rgba(15,20,32,.35));
+    }
+    .side-head h2{
+      margin:0;
+      font-size:14px;
+      letter-spacing:.6px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .side-actions{
+      display:flex;
+      gap:10px;
+      padding: 12px 14px;
+      border-bottom:1px solid var(--border);
+    }
+    button{
+      cursor:pointer;
+      border:1px solid var(--border2);
+      background: rgba(11,13,18,.6);
+      color: var(--text);
+      padding:10px 12px;
+      border-radius: 14px;
+      font-weight:600;
+      font-size: 13px;
+      transition: transform .06s ease, border-color .2s ease, background .2s ease;
+      width:100%;
+    }
+    button:hover{
+      border-color: rgba(78,164,255,.55);
+      background: rgba(78,164,255,.10);
+    }
+    button:active{ transform: translateY(1px); }
+    .nav{
+      padding: 10px 10px 12px;
+    }
+    .nav a{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      text-decoration:none;
+      padding:10px 10px;
+      border-radius: 14px;
+      border: 1px solid transparent;
+      color: var(--text);
+      font-size: 14px;
+    }
+    .nav a:hover{
+      border-color: var(--border);
+      background: rgba(255,255,255,.04);
+    }
+    .dot{
+      width:8px; height:8px; border-radius:50%;
+      background: var(--blue);
+      box-shadow: 0 0 0 3px rgba(78,164,255,.12);
+      flex:none;
+    }
+    .dot.p{ background: var(--pink); box-shadow: 0 0 0 3px rgba(255,91,214,.10); }
+    .dot.g{ background: var(--green); box-shadow: 0 0 0 3px rgba(65,255,180,.10); }
+    .dot.y{ background: var(--yellow); box-shadow: 0 0 0 3px rgba(255,213,106,.10); }
 
-  &lt;p&gt;&lt;b&gt;Structure visuelle&lt;/b&gt; — La mise en scène repose sur des motifs récurrents (miroir, eau, souffle, clope, reflet) agencés selon un principe de symétrie.  
-  L’image devient mémoire, la mémoire devient matière.  
-  À la fin, tout se replie dans le reflet — celui du lac ou du bar, impossible à distinguer.
-&lt;/details&gt;</pre>
-    </details>
-    <details style='margin:8px 0;padding:10px;border:1px solid #333;border-radius:10px;'>
-      <summary style='cursor:pointer;font-weight:bold;color:#4ea4ff'>le-lac-acting.txt</summary>
-      <pre style='white-space:pre-wrap'>🎭 ACTING
+    /* MAIN */
+    .main{
+      border:1px solid var(--border);
+      border-radius: var(--radius2);
+      background: rgba(15,20,32,.45);
+      box-shadow: var(--shadow2);
+      overflow:hidden;
+    }
+    .main-top{
+      padding: 14px 18px 12px;
+      border-bottom:1px solid var(--border);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+      background:
+        radial-gradient(circle at 15% 30%, rgba(78,164,255,.10), transparent 55%),
+        linear-gradient(180deg, rgba(15,20,32,.85), rgba(15,20,32,.35));
+    }
+    .main-top h2{
+      margin:0;
+      font-size: 15px;
+      letter-spacing:.6px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .hint{
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* DETAILS CARDS */
+    .cards{
+      padding: 14px;
+      display:grid;
+      gap: 12px;
+    }
+    details.grp{
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      background: rgba(11,13,18,.45);
+      overflow:hidden;
+    }
+    details.grp[open]{
+      border-color: rgba(78,164,255,.35);
+      box-shadow: 0 10px 26px rgba(0,0,0,.28);
+      background: rgba(11,13,18,.55);
+    }
+    summary{
+      list-style:none;
+      cursor:pointer;
+      padding: 12px 14px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:800;
+      color: var(--text);
+      user-select:none;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    .file{
+      font-family: var(--mono);
+      font-size: 12.5px;
+      color: rgba(231,238,252,.92);
+    }
+    .pill{
+      margin-left:auto;
+      font-size:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      color: var(--muted);
+      background: rgba(15,20,32,.55);
+      font-weight:700;
+    }
+    .pill.hot{ color: rgba(255,213,106,.95); border-color: rgba(255,213,106,.25); background: rgba(255,213,106,.06); }
+    .pill.sec{ color: rgba(255,91,214,.95); border-color: rgba(255,91,214,.25); background: rgba(255,91,214,.06); }
+
+    .content{
+      padding: 0 14px 14px;
+    }
+    pre{
+      margin:0;
+      padding: 14px;
+      border-radius: 14px;
+      border:1px solid rgba(160,180,220,.18);
+      background: rgba(15,20,32,.65);
+      color: rgba(231,238,252,.92);
+      font-family: var(--mono);
+      font-size: 12.5px;
+      white-space: pre-wrap;
+      overflow:auto;
+      line-height:1.5;
+    }
+
+    /* FOOTER */
+    .foot{
+      padding: 14px 18px 18px;
+      border-top:1px solid var(--border);
+      color: var(--muted);
+      font-size: 12px;
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    /* small helpers */
+    .k{ color: var(--blue); font-weight:700; }
+    .warn{ color: rgba(255,213,106,.95); font-weight:800; }
+    .lock{ color: rgba(255,91,214,.95); font-weight:800; }
+  </style>
+</head>
+
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="title">
+        <h1>LE LAC — Dossier</h1>
+        <p class="sub">
+          Version interactive (pliable) : documents artistiques, technique, production, planning, casting, contacts.
+        </p>
+      </div>
+
+      <div class="tags">
+        <span class="tag"><b>Film</b> · dossier interne</span>
+        <span class="tag"><b>Spectra Media</b> · Le Mans</span>
+        <span class="tag danger"><span class="lock">⚠</span> NE PAS PARTAGER</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <!-- SIDEBAR -->
+    <aside class="side" aria-label="Sommaire">
+      <div class="side-head">
+        <h2>Sommaire</h2>
+      </div>
+
+      <div class="side-actions">
+        <button type="button" onclick="openAll()">Ouvrir tout</button>
+        <button type="button" onclick="closeAll()">Fermer tout</button>
+      </div>
+
+      <nav class="nav">
+        <a href="#intro"><span class="dot p"></span> Intro</a>
+        <a href="#entete"><span class="dot"></span> Résumé & fiche</a>
+        <a href="#film"><span class="dot"></span> Le film</a>
+        <a href="#histoire"><span class="dot"></span> L’histoire</a>
+        <a href="#miseenscene"><span class="dot"></span> Mise en scène</a>
+        <a href="#acting"><span class="dot"></span> Acting</a>
+        <a href="#note-tech"><span class="dot"></span> Note technique</a>
+        <a href="#decoupage"><span class="dot"></span> Découpage final</a>
+        <a href="#scenes"><span class="dot"></span> Scènes détaillées</a>
+        <a href="#storyboard"><span class="dot"></span> Storyboard</a>
+        <a href="#soundtrack"><span class="dot g"></span> Soundtrack</a>
+        <a href="#equipe"><span class="dot"></span> Équipe</a>
+        <a href="#besoins"><span class="dot"></span> Besoins humains</a>
+        <a href="#budget"><span class="dot y"></span> Budget</a>
+        <a href="#plan-tournage"><span class="dot"></span> Plan de tournage</a>
+        <a href="#planning-benevoles"><span class="dot"></span> Planning bénévoles</a>
+        <a href="#planning-comediens"><span class="dot"></span> Planning comédiens</a>
+        <a href="#cast"><span class="dot"></span> Cast</a>
+        <a href="#contacts"><span class="dot"></span> Contacts</a>
+        <a href="#access"><span class="dot p"></span> Accès</a>
+      </nav>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+      <div class="main-top">
+        <h2>Documents</h2>
+        <div class="hint">Astuce : clique sur un titre pour déplier. <span class="k">Ouvrir/Fermer tout</span> à gauche.</div>
+      </div>
+
+      <section class="cards">
+
+        <!-- INTRO -->
+        <details class="grp" id="intro" open>
+          <summary>
+            <span class="file">le-lac-intro.txt</span>
+            <span class="pill sec">confidentiel</span>
+          </summary>
+          <div class="content">
+<pre>🎬 LE LAC  
+un film de Vincent Letort  
+⚠️ NE PAS PARTAGER !!!</pre>
+          </div>
+        </details>
+
+        <!-- ENTETE -->
+        <details class="grp" id="entete" open>
+          <summary>
+            <span class="file">le-lac-entete.txt</span>
+            <span class="pill">résumé</span>
+          </summary>
+          <div class="content">
+<pre>📌 Résumé &amp; Fiche technique
+
+Résumé narratif
+Victor, 50 ans, se souvient d’un été au lac lorsqu’il avait une vingtaine d’années.
+Mathias était beau. Libre. Il l’aimait, sans le dire.
+Le souvenir est doux, presque doré. Mais la mémoire ment.
+La nuit, Mathias entre dans l’eau et n’en revient pas.
+Victor ne se souvient pas du meurtre — seulement du désir.</pre>
+          </div>
+        </details>
+
+        <!-- LE FILM -->
+        <details class="grp" id="film">
+          <summary>
+            <span class="file">le-lac-le-film.txt</span>
+            <span class="pill">synopsis</span>
+          </summary>
+          <div class="content">
+<pre>🎬 LE FILM — LE LAC
+──────────────────────────────────────────────
+
+📖 SYNOPSIS  
+Victor, 50 ans, se souvient d'une journée particulière au lac où il a passé un week-end avec Mathias.  
+Le souvenir d’un été qui ne passe pas.  
+Une nuit, Mathias entre dans l’eau et ne remonte plus.  
+Ici, le Son tient le récit, le silence avoue.
+
+──────────────────────────────────────────────
+🪶 SCÉNARIO &amp; INTENTION  
+Le Lac explore la mémoire qui ment.  
+Fred raconte un amour réécrit.  
+L’eau, le vent, le souffle, le tintement d’une cuillère guident la narration.  
+L’image respire ; le film doit pouvoir être vu les yeux fermés.
+
+• Années 1990 — Bord de lac / maison de vacances  
+• Écriture : plans longs, gestes retenus, lumière qui respire</pre>
+          </div>
+        </details>
+
+        <!-- HISTOIRE -->
+        <details class="grp" id="histoire">
+          <summary>
+            <span class="file">le-lac-histoire.txt</span>
+            <span class="pill">récit</span>
+          </summary>
+          <div class="content">
+<pre>🎞️ L’HISTOIRE — LE LAC
+──────────────────────────────────────
+
+Paris, hiver.  
+Fred, la cinquantaine, fume à la terrasse d’un café.  
+Sa voix calme semble raconter un souvenir heureux.  
+Il parle à une femme qu’on ne voit presque pas, mais ses mots s’adressent davantage à lui-même.  
+Autour, les bruits du café — tasses, souffle, circulation — se fondent dans le vent.  
+Le tintement d’une cuillère devient vague, la lumière dans le café devient reflet d’eau.  
+Le film bascule dans un autre temps.
+
+Été. Un lac vert, silencieux.  
+Mathias nage seul, libre, lumineux, presque irréel.  
+Victor, jeune, l’observe depuis la rive.  
+Il l’admire, le désire peut-être, sans jamais oser le dire.  
+Mathias joue avec cette ambiguïté, entre bienveillance et distance.  
+Tout est retenu : un clin d’œil, une main frôlée, un rire étouffé.  
+Leur lien existe entre les silences.
+
+Le film avance comme une mémoire fragmentée.  
+Un été figé, sans drame apparent, mais traversé d’une tension invisible.  
+Fred raconte ce souvenir avec douceur, comme s’il cherchait à se rassurer.  
+« On s’est perdus de vue », dit-il.  
+Mais ses silences sont trop longs, ses yeux trop fixes.  
+Le son du lac revient dans sa tasse, la cuillère recommence à tourner :  
+c’est le passé qui insiste.
+
+Puis vient la nuit.  
+Victor est seul sur la rive.  
+Mathias, calme, se déshabille et entre dans le lac.  
+L’eau le recouvre lentement.  
+Victor reste immobile, comme vidé de lui-même.  
+Le bruit de l’eau s’étire, devient valse mélancolique.  
+C’est la musique du déni, du souvenir qui refuse de mourir.
+
+Retour au café.  
+Fred termine son histoire, voix presque éteinte :  
+« Je crois qu’il m’aime encore. »  
+Son regard se perd dans le vide.  
+Alors seulement, le spectateur comprend :  
+Mathias n’a jamais disparu.  
+Il est mort cette nuit-là.  
+Et depuis, Fred répète le récit pour ne plus s’en souvenir.  
+Le lac devient le miroir de son inconscient :
+une surface calme où tout s’efface,
+et où chaque mot prononcé le ramène au bord du vertige.</pre>
+          </div>
+        </details>
+
+        <!-- MISE EN SCÈNE -->
+        <details class="grp" id="miseenscene">
+          <summary>
+            <span class="file">le lac Mise en scene.txt</span>
+            <span class="pill">intention</span>
+          </summary>
+          <div class="content">
+<pre>🎥 Intention de mise en scène
+
+Le film s’inscrit dans une lenteur assumée, presque méditative. Chaque plan laisse au spectateur le temps d’entrer dans la matière : l’eau, la lumière, le souffle. Les silences ont la même valeur dramatique que les sons. Le récit progresse par résonance, non par action.
+
+Caméra — Les mouvements sont rares, toujours organiques : glissements lents, travellings discrets, respirations à l’épaule. L’image respire avec les personnages. La caméra observe plus qu’elle ne raconte.
+
+Optiques &amp; texture —  
+Utilisation privilégiée du 35 mm et du 50 mm fixe pour leur rendu proche du regard humain.  
+Diffusion douce (Tiffen Black Pro-Mist 1/4) et filtres ND pour préserver les hautes lumières au bord de l’eau.  
+Polarisation légère sur les scènes du lac afin d’accentuer la dimension miroir.  
+Colorimétrie inspirée du cinéma argentique (Kodak 5219), avec une dominante bleutée pour l’hiver et dorée pour l’été.
+
+Son — Le design sonore est moteur du récit : le souffle du briquet, les clapotis, la respiration, deviennent leitmotiv. La valse finale (inspiration Satie / Portishead / LTJ Bukem) clôt le cycle par un effacement du monde.
+
+Lumière — Recherche d’une lumière pré-narrative : la sensation avant la compréhension.  
+Les reflets d’eau, la brume, le contre-jour servent à exprimer l’incertitude du souvenir.  
+Chaque changement de saison correspond à une mutation intérieure de l’image : du froid métallique à la chaleur diluée.
+
+Structure visuelle — La mise en scène repose sur des motifs récurrents (miroir, eau, souffle, clope, reflet) agencés selon un principe de symétrie.  
+L’image devient mémoire, la mémoire devient matière.  
+À la fin, tout se replie dans le reflet — celui du lac ou du bar, impossible à distinguer.</pre>
+          </div>
+        </details>
+
+        <!-- ACTING -->
+        <details class="grp" id="acting">
+          <summary>
+            <span class="file">le-lac-acting.txt</span>
+            <span class="pill">direction</span>
+          </summary>
+          <div class="content">
+<pre>🎭 ACTING
 
 Victor jeune (Antonin Pichon) — timide / “tueur” symbolique
 -----------------------------------------------------------
@@ -65,109 +561,72 @@ Retour au café. Tu termines : « Je crois qu’il... »
 Clé : tu peux reformuler. Respiration, silences, musicalité. Doux, sans affect.
 Quand tu te tais, le son finit la phrase.
 
-LE LAC – NOTE À FRED (Victor âgé)
-</pre>
-    </details>
-    <details style='margin:8px 0;padding:10px;border:1px solid #333;border-radius:10px;'>
-      <summary style='cursor:pointer;font-weight:bold;color:#4ea4ff'>le-lac-besoins-humains.txt</summary>
-      <pre style='white-space:pre-wrap'>👥 BESOINS HUMAINS — Équipe &amp; échéances (calendrier réel)
-──────────────────────────────────────────────────────────────
+LE LAC – NOTE À FRED (Victor âgé)</pre>
+          </div>
+        </details>
 
-1️⃣ Maintenant → Déc 2025 — Verrouiller l’ossature
-• Producteur·rice exécutif·ve (Spectra Media) — budget, contrats, assurances, autorisations (mairie / Parc / drone). À signer avant 15 déc.
-• 1er assistant·e réal — plan de travail, call-sheets, coordination. Dès maintenant.
-• Chef op (DoP) — langage 24/35/50 mm (+macro 85), plans longs, diffusions soie. À confirmer avant 15 déc.
-• Ingénieur·e du son (binaural / hydrophones) + perchman — grammaire souffle/eau/métal, mix 5.1 + binaural. Avant fin déc.
-• Régisseur·se général·e — hébergements, véhicules, sécurité eau. Avant fin déc.
-• Storyboard / scripte visuel·le — shot-list fidèle aux “plans longs / glissements lents”. Dès maintenant.
+        <!-- NOTE TECH -->
+        <details class="grp" id="note-tech">
+          <summary>
+            <span class="file">le-lac-note-technique.txt</span>
+            <span class="pill">technique</span>
+          </summary>
+          <div class="content">
+<pre>🎥 NOTE TECHNIQUE — LE LAC (révisée selon configuration Cité du Film)
+──────────────────────────────────────────────
 
-2️⃣ Jan → Mars 2026 — Pré-production &amp; repérages
-• Gaffer + électros — repérages lac/clairière/café, contre-jours dorés (été) vs gris/bleu (hiver).
-• Machinistes — trépied/slider, glissements lents; coordination drone.
-• Déco / accessoires — doublons objets “son” (cuillères, cartes, briquets) + continuité.
-• Costumes / HMC — 1990s au lac/clairière; 2010s au café; peau/eau flatteuses.
-• Régie sécurité eau — périmètre rive, couvertures, talkies; maître-nageur local.
+📸 IMAGE
+Caméra principale : Sony FX6 – plein format, rendu organique proche pellicule
+Objectifs : DZO Vespid T2.1 — 25 / 35 / 50 / 75 / 90 mm macro
+Format : 4K RAW — 1.85 — 25 fps
+Optiques clés par scène :
+• Bar (hiver) : 50–75 mm — intimité, chaleur de la flamme
+• Lac (été) : 35 mm — plan contemplatif, symétrie, silence
+• Clairière : 25 mm — vie, respiration, tension latente
+• Errance : 90 mm macro — matière, herbes, sang, isolement
+• Eau miroir : 35–50 mm — reflet, pureté, disparition
+• Final : 75 mm — flou poétique, introspection
 
-3️⃣ Févr 2026 — Tournage Café (Fred / Victor 50 ans)
-• Comédien : Frédéric Radepont — notes de jeu “souffle/cuillère, récit qui ment”.
-• Équipe image complète (DoP, 1er/2e AC, gaffer, machino) — lumière froide, reflet vert tasse.
-• Équipe son (ingé + perche) — proximité tasse/porcelaine, rumeur terrasse.
-• Régie — autorisation terrasse parisienne, habillage années 2010.
+Drone complémentaire : DJI Inspire 3 (plans verticaux lents, symétrie lac).
+Mouvement : plans longs (10–20 s), glissements lents, cadres fixes traversés par le vent/l’eau.
+Lumière image : LUT douce DaVinci Resolve ; exposition fine ; flou poétique contrôlé.
 
-4️⃣ Avril → Juin 2026 — Lac / Clairière (Maxime &amp; Antonin)
-• Comédiens : Maxime Dauney (Mathias), Antonin Pichon (Victor jeune) — tournage prévu mai-juin (Maxime 3 jours max).
-• Opérateur·rice drone certifié·e + assistant — Inspire 3 / X9, plans miroir &amp; aube.
-• Équipe image — optiques 24/35/50 (+macro 85), contre-plongées flatteuses sur Mathias, plans longs.
-• Équipe son — hydrophones au lac, prises souffle/respiration, wildtracks herbes/campagne.
-• Régie — sécurité eau, serviettes/plaids, itinéraires accès clairière/lac.
+💡 LUMIÈRE
+Sources : Nanlite FS-150B ×3 + réflecteurs Manfrotto ; panneau LED souple bicolore pour les intérieurs.
+Approche : Été vert/or (diffusion soie, contre-jours légers) ; Hiver gris/bleu (contraste doux).
+Intention : beauté maîtrisée — peau, eau, matière, reflets, brume ; halo doré sur peau humide ; grain constant sans ostentation.
 
-5️⃣ Juil → Août 2026 — Post-production
-• Monteur·se image — rythme contemplatif, coupes guidées par le son/vent.
-• Sound designer / mixeur·se — souffle inversé, 5.1 + binaural; référence The Substance.
-• Étalonneur·se — été vert/or, hiver gris/bleu, diffusion douce.
-• Graphiste — affiche + teaser festivals. Fin août prêt.
+🎧 SON
+Captation : MixPre-6 II + micros DPA 2017 ; HF Deity pour dialogues ; Tentacle Sync ; casque HD25.
+Ambiances : hydrophones Aquarian ; binaural ; perche pour plans intérieurs.
+Grammaire : vent / souffle / eau / métal — morphing acoustique réel → mémoire.
+Mixage : Pro Tools + Neumann U87 + Genelec 5.1 ; 5.1 + binaural ; silence comme tension physique.
 
-6️⃣ Sept → Déc 2026 — Festivals &amp; diffusion
-• Chargé·e de diffusion — envois DCP/ProRes, sous-titres si besoin.
-• Attaché·e de presse — presse locale &amp; culture.
-• Community manager — site + réseaux; cut teaser.
-• Festival Chéri Chéri — deadline : 31 août 2026 (à vérifier).
+🎬 ACCESSOIRES &amp; SÉCURITÉ
+Accessoires
+• Café (2015) : tasses porcelaine, cuillères métal, menu papier, smartphone noir, manteau, écharpe, journal.
+• Lac / Clairière (années 1990) : walkman, jeu de cartes, Zippo, bouteille verre, serviette, shorts 90s, sandales,
+  chemise à carreaux (Victor), t-shirt blanc (Mathias).
+Technique : ND variable, polar, diffusion soie, SSD / V-Lock, DIT 3-2-1, trépied, matte box, perche HF,
+  câbles étanches, gants néoprène, sacs étanches.
+Sécurité eau : talkies, périmètre rive, couvertures de survie, thermos, plaids, balises LED.
+Raccords : doublons objets “son” (cuillères, briquets, cartes) + photos continuité.
 
-🔧 Sous-catégorie “Technique” — postes à pourvoir par priorité
-• Priorité immédiate (déc 2025) : DoP • Ingé son (binaural/hydro) • 1er AD • Régie générale.
-• Avant repérages (jan-mars) : Gaffer + électros • Machinistes • Déco/props • Costumes • HMC.
-• Avant tournage (avr-mai) : 2e AC/DIT (sauvegardes 4K RAW) • Opérateur·rice drone certifié·e + assistant • Sécurité eau.
-• Post-prod (juin-août) : Monteur·se image • Sound designer/mixeur·se • Étalonneur·se • Graphiste (affiche/teaser).
-</pre>
-    </details>
-    <details style='margin:8px 0;padding:10px;border:1px solid #333;border-radius:10px;'>
-      <summary style='cursor:pointer;font-weight:bold;color:#4ea4ff'>le-lac-budget.txt</summary>
-      <pre style='white-space:pre-wrap'>💶 BUDGET (3 jours — estimation 4,9–6,1 k€)
-────────────────────────────────────────────
+🔁 POST-PRODUCTION
+Image : DaVinci Resolve Studio + Eizo CG319X — étalonnage doux et naturel.
+Son : Pro Tools + Neumann U87 + Genelec 5.1 — mix immersif et spatial.
+Master : 4K ProRes HQ + DCP 5.1 / binaural.</pre>
+          </div>
+        </details>
 
-Image — caméra / optique / support : 700–1 050 €
-Drone — opérateur + Inspire 3 : 500–800 €
-Lumière — réflecteurs / diffusion + HMI : 300–500 €
-Son — F6, hydrophones, binaural, perche : 350–550 €
-Assurances — RC + matos : 250–380 €
-Régie — hébergements / repas : 700–1 050 €
-Transports — VL / péages : 220–360 €
-Autorisations — mairie / parc / café / drone : 120–220 €
-Défraiements — comédiens / tech : 500–800 €
-Post-prod — montage / mix / étalo : 900–1 200 €
-Imprévus (≈10 %) : 360–500 €
-
-Total cible : 4,9 k€ → 6,1 k€
-</pre>
-    </details>
-    <details style='margin:8px 0;padding:10px;border:1px solid #333;border-radius:10px;'>
-      <summary style='cursor:pointer;font-weight:bold;color:#4ea4ff'>le-lac-cast.txt</summary>
-      <pre style='white-space:pre-wrap'>🎬 CAST — Distribution principale
-──────────────────────────────────
-
-Frédéric Radepont — Netflix / Canal+  
-Rôle : Victor âgé
-
-Maxime Dauney — Armani, Gucci (Success)  
-Rôle : Mathias
-
-Antonin Pichon —  
-Rôle : Victor jeune
-</pre>
-    </details>
-    <details style='margin:8px 0;padding:10px;border:1px solid #333;border-radius:10px;'>
-      <summary style='cursor:pointer;font-weight:bold;color:#4ea4ff'>le-lac-contact.txt</summary>
-      <pre style='white-space:pre-wrap'>📞 CONTACTS
-──────────────────────
-
-Vincent Letort  
-📧 vincentbastille100@gmail.com  
-📱 06 59 98 67 50
-</pre>
-    </details>
-    <details style='margin:8px 0;padding:10px;border:1px solid #333;border-radius:10px;'>
-      <summary style='cursor:pointer;font-weight:bold;color:#4ea4ff'>le-lac-decoupage-final.txt</summary>
-      <pre style='white-space:pre-wrap'>🎥 DÉCOUPAGE FINAL — LE LAC  
+        <!-- DÉCOUPAGE FINAL -->
+        <details class="grp" id="decoupage">
+          <summary>
+            <span class="file">le-lac-decoupage-final.txt</span>
+            <span class="pill hot">core</span>
+          </summary>
+          <div class="content">
+<pre>🎥 DÉCOUPAGE FINAL — LE LAC  
 (plans, optiques, distance, lumière)
 ───────────────────────────────────────────────
 
@@ -250,24 +709,164 @@ SCÈNE 8bis — Danse (fête) : chorégraphie improvisée
 • Plan 2 — Victor ferme les yeux. Le son du souffle devient musique.  
 • Plan 3 — Eau du lac superposée au miroir du bar.  
 • Plan 4 — Flamme qui s’éteint. Valse lente.  
-• Plan 5 — Noir total. Silence.
-</pre>
-    </details>
-    <details style='margin:8px 0;padding:10px;border:1px solid #333;border-radius:10px;'>
-      <summary style='cursor:pointer;font-weight:bold;color:#4ea4ff'>le-lac-entete.txt</summary>
-      <pre style='white-space:pre-wrap'>C📌 Résumé &amp; Fiche technique
+• Plan 5 — Noir total. Silence.</pre>
+          </div>
+        </details>
 
-Résumé narratif
-Victor, 50 ans, se souvient d’un été au lac lorsqu’il avait une vingtaine d’années.
-Mathias était beau. Libre. Il l’aimait, sans le dire.
-Le souvenir est doux, presque doré. Mais la mémoire ment.
-La nuit, Mathias entre dans l’eau et n’en revient pas.
-Victor ne se souvient pas du meurtre — seulement du désir.
-</pre>
-    </details>
-    <details style='margin:8px 0;padding:10px;border:1px solid #333;border-radius:10px;'>
-      <summary style='cursor:pointer;font-weight:bold;color:#4ea4ff'>le-lac-equipe.txt</summary>
-      <pre style='white-space:pre-wrap'>Équipe &amp; besoins partenaires
+        <!-- SCÈNES DÉTAILLÉES -->
+        <details class="grp" id="scenes">
+          <summary>
+            <span class="file">le-lac-scenes-detaillees.txt</span>
+            <span class="pill">plans</span>
+          </summary>
+          <div class="content">
+<pre>🎬 1. BAR (hiver)
+Plan 1 — Plan fixe sur le verre, condensation, gouttes qui glissent lentement.
+Plan 2 — Gros plan : main de Victor (âgé) allumant le briquet, léger souffle sonore.
+Plan 3 — Reflet d’eau mouvante dans le miroir derrière le comptoir.
+Plan 4 — Contrechamp : visage de Victor, éclairé par la flamme.
+Plan 5 — Insert : flamme qui s’éteint, bruit du briquet amplifié, transition sonore vers l’eau.
+
+🌊 2. LAC (été)
+Plan 1 — Plan drone d’ensemble : lac immobile, seul Mathias nage.
+Plan 2 — Plan serré sur les épaules de Mathias qui émergent de l’eau.
+Plan 3 — Champ/contrechamp : Victor jeune observe depuis la berge.
+Plan 4 — Gouttes d’eau tombant au ralenti sur la surface — motif sonore.
+Plan 5 — Contre-plongée aquatique : Mathias sous l’eau, rayon de lumière.
+Plan 6 — Transition : plan fixe sur la berge vide, seul le bruit du vent reste.
+
+☁️ 3. BORD DU LAC
+Plan 1 — Plan moyen : Mathias torse nu se sèche, serviette blanche.
+Plan 2 — Victor tente d’allumer sa cigarette, le briquet refuse.
+Plan 3 — Mathias s’approche, sourit, allume pour lui.
+Plan 4 — Gros plan : flamme entre eux deux, chaleur qui vacille.
+Plan 5 — Plan serré sur leurs regards qui se croisent puis se fuient.
+
+🃏 4. CLAIRIÈRE
+Plan 1 — Plan large : trois jeunes autour d’une couverture, ambiance solaire.
+Plan 2 — Mains qui battent les cartes (motif sonore rythmique).
+Plan 3 — Rires, légèreté, une ombre passe sur le visage de Mathias.
+Plan 4 — Champ/contrechamp : Victor et Mathias, tension naissante.
+Plan 5 — Mathias se lève brusquement, part en silence.
+Plan 6 — Les cartes restent sur la couverture, battement feutré en écho.
+
+🌾 5. ERRANCE DE MATHIAS
+Plan 1 — Travelling lent : Mathias marche à travers les herbes hautes.
+Plan 2 — Insert : herbes caressées par ses doigts, souffle du vent.
+Plan 3 — Gros plan : oiseau mort, sang frais. Silence absolu.
+Plan 4 — Mathias s’immobilise, entend un bruit hors champ.
+Plan 5 — Caméra tremblée : il tourne la tête. Gros cut.
+
+🍸 6. RETOUR AU BAR
+Plan 1 — Même décor qu’ouverture : Victor, plus fatigué, verre vide.
+Plan 2 — Plan sur le miroir : silhouette floue passe derrière.
+Plan 3 — Gros plan sur le reflet du briquet.
+Plan 4 — Silhouette indistincte disparaît dans le reflet.
+Plan 5 — La flamme s’éteint lentement, fondu sonore vers silence.
+
+👕 7. MAGASIN DE FRIPES
+Plan 1 — Plan général du magasin de fripes, ambiance douce, lumière dorée.
+Plan 2 — Victor essaie une veste trop grande.
+Plan 3 — Mathias s’approche, ajuste le col, leurs visages se rapprochent.
+Plan 4 — Miroir : deux reflets, légèrement décalés.
+Plan 5 — Victor esquisse un sourire, gêné — mensonge en germe.
+
+💡 8. FÊTE
+Plan 1 — Flash stroboscopique, foule indistincte, musique saturée.
+Plan 2 — Mathias et Victor dansent enivrés, pas forcément ensemble, sourire sincère.
+Plan 3 — L'intrus de la clairière s’approche de Mathias.
+Plan 4 — Ralenti : Victor observe, visage fermé.
+Plan 5 — Champ vide : Mathias a disparu dans la foule.
+Plan 6 — Écho sonore des basses — transition vers l’eau.
+
+🌫 9. EAU MIROIR
+Plan 1 — Plan large, symétrique parfait, lac calme sans vent.
+Plan 2 — Mathias entre lentement dans l’eau, silence complet.
+Plan 3 — Plan rapproché : reflet du ciel se déforme.
+Plan 4 — Plongée verticale : éclaboussures, immersion.
+Plan 5 — L’eau redevient lisse, silence.
+Plan 6 — Seul reste le miroir du ciel, fondu vers obscurité.
+
+⚫️ 10. FINAL
+Plan 1 — Retour au bar : Victor fixe son reflet.
+Plan 2 — Le miroir vacille, image double.
+Plan 3 — Fondu sonore : le souffle du lac revient.
+Plan 4 — La lumière s’éteint.
+Plan 5 — Écran noir, silence total.</pre>
+          </div>
+        </details>
+
+        <!-- STORYBOARD -->
+        <details class="grp" id="storyboard">
+          <summary>
+            <span class="file">le-lac-storyboard.txt</span>
+            <span class="pill">repères</span>
+          </summary>
+          <div class="content">
+<pre>🧠 STORYBOARD — LE LAC
+──────────────────────────────────────────────
+
+1️⃣ Scène 01 — Café (hiver)  
+Victor 50 ans, assis dehors. Buée sur la vitre, espresso, cigarette.  
+Le tintement de la cuillère glisse vers le souffle du vent.
+
+2️⃣ Scène 02 — Lac (drone vertical)  
+Drone vertical ; Mathias au centre du cadre, ride légère.  
+Présence calme, l’eau est la matière du souvenir.
+
+3️⃣ Scène 03 — Macro 85 mm  
+Gouttes sur la peau, reflets ; diffusion douce.  
+Le corps devient paysage lumineux.
+
+4️⃣ Scène 04 — Clairière (jeu de cartes)  
+Les deux assis en tailleur sur une couverture, rient et jouent.  
+Rayon de soleil direct sur Mathias, caméra à hauteur de tête, 50 mm.
+
+5️⃣ Scène 05 — Symétrie au couchant  
+Miroir parfait, vent nul ; la surface se brise doucement.  
+Plan contemplatif, score en valse mélancolique.</pre>
+          </div>
+        </details>
+
+        <!-- SOUNDTRACK -->
+        <details class="grp" id="soundtrack">
+          <summary>
+            <span class="file">le-lac-soundtrack.txt</span>
+            <span class="pill">musique</span>
+          </summary>
+          <div class="content">
+<pre>🎵 SOUNDTRACK — LE LAC
+──────────────────────────────────────────────
+
+Sélection de morceaux issus de la bande originale du film LE LAC,  
+composés et produits par Vincent Bastille.
+
+1. Vincent Bastille — Borderline (Final)  
+   → Thème principal du film, motif récurrent (briquet / souffle / miroir)
+
+2. Vincent Bastille — Lazare (générique de fin)  
+   → Fermeture du récit, fusion du son et du silence.
+
+3. Vincent Bastille — Sidreal (scène de sèches)  
+   → Rythme suspendu, respiration du film.
+
+4. Vincent Bastille — Intro drone lac (Mathias)  
+   → Texture lente et profonde, thème de l’apparition de Mathias.
+
+Note d’écoute  
+Cliquez sur ▶️ dans la version interactive pour écouter chaque extrait.  
+(Aucun autoplay.)</pre>
+          </div>
+        </details>
+
+        <!-- ÉQUIPE -->
+        <details class="grp" id="equipe">
+          <summary>
+            <span class="file">le-lac-equipe.txt</span>
+            <span class="pill">partenaires</span>
+          </summary>
+          <div class="content">
+<pre>Équipe &amp; besoins partenaires
 
 Confirmés  
 Réalisation/écriture : Vincent Letort — Interprètes :  
@@ -275,588 +874,222 @@ Frédéric Radepont (Victor 50 ans), Maxime Dauney (Mathias), Antonin Pichon (Vi
 
 À recruter  
 Chef op (DoP), ingénieur·e du son (binaural / hydrophones / sound design immersif),  
-perchman, gaffer, machiniste, 1er/2nd assistant·e réal, déco/accessoires, maquillage/coiffure, régie, opérateur·trice drone.
-</pre>
-    </details>
-    <details style='margin:8px 0;padding:10px;border:1px solid #333;border-radius:10px;'>
-      <summary style='cursor:pointer;font-weight:bold;color:#4ea4ff'>le-lac-fiche-technique.txt</summary>
-      <pre style='white-space:pre-wrap'>🎞️ FICHE TECHNIQUE — LE LAC
-──────────────────────────────────────
+perchman, gaffer, machiniste, 1er/2nd assistant·e réal, déco/accessoires, maquillage/coiffure, régie, opérateur·trice drone.</pre>
+          </div>
+        </details>
 
-Titre : LE LAC  
-Durée : ~20 min (dont ~4 min de générique sonore)  
-Genre : Court métrage — fiction poétique  
-Réalisation / Scénario : Vincent Letort  
-Production : Spectra Media (Le Mans)  
-Image : 4K RAW — 1.85 — 25 fps — Blackmagic URSA Mini Pro 12K  
-Drone : Inspire 3 + Zenmuse X9  
-Optiques : 24 / 35 / 50 mm + macro 85 mm  
-Son : Zoom F6 — hydrophones — binaural — perche  
-Lieux : Lac &amp; forêt de Sillé-le-Guillaume (Sarthe) / Spay  + café parisien ou manceau à l&#x27;allure parisien (Le pilier rouge)  
-Période de tournage : 3 jours — été (fenêtre météo)  
-Budget estimé : ≈ 4,9 – 6,1 k€  
-Diffusion visée : Festivals / Arte Shorts / plateformes culture
-</pre>
-    </details>
-    <details style='margin:8px 0;padding:10px;border:1px solid #333;border-radius:10px;'>
-      <summary style='cursor:pointer;font-weight:bold;color:#4ea4ff'>le-lac-histoire.txt</summary>
-      <pre style='white-space:pre-wrap'>🎞️ L’HISTOIRE — LE LAC
-──────────────────────────────────────
+        <!-- BESOINS HUMAINS -->
+        <details class="grp" id="besoins">
+          <summary>
+            <span class="file">le-lac-besoins-humains.txt</span>
+            <span class="pill">planning</span>
+          </summary>
+          <div class="content">
+<pre>👥 BESOINS HUMAINS — Équipe &amp; échéances (calendrier réel)
+──────────────────────────────────────────────────────────────
 
-Paris, hiver.  
-Fred, la cinquantaine, fume à la terrasse d’un café.  
-Sa voix calme semble raconter un souvenir heureux.  
-Il parle à une femme qu’on ne voit presque pas, mais ses mots s’adressent davantage à lui-même.  
-Autour, les bruits du café — tasses, souffle, circulation — se fondent dans le vent.  
-Le tintement d’une cuillère devient vague, la lumière dans le café devient reflet d’eau.  
-Le film bascule dans un autre temps.  
+1️⃣ Maintenant → Déc 2025 — Verrouiller l’ossature
+• Producteur·rice exécutif·ve (Spectra Media) — budget, contrats, assurances, autorisations. À signer avant 15 déc.
+• 1er assistant·e réal — plan de travail, call-sheets, coordination. Dès maintenant.
+• Chef op (DoP) — langage 24/35/50 mm (+macro 85), plans longs, diffusions soie. À confirmer avant 15 déc.
+• Ingénieur·e du son (binaural / hydrophones) + perchman — grammaire souffle/eau/métal, mix 5.1 + binaural. Avant fin déc.
+• Régisseur·se général·e — hébergements, véhicules, sécurité eau. Avant fin déc.
+• Storyboard / scripte visuel·le — shot-list fidèle aux “plans longs / glissements lents”. Dès maintenant.
 
-Été. Un lac vert, silencieux.  
-Mathias nage seul, libre, lumineux, presque irréel.  
-Victor, jeune, l’observe depuis la rive.  
-Il l’admire, le désire peut-être, sans jamais oser le dire.  
-Mathias joue avec cette ambiguïté, entre bienveillance et distance.  
-Tout est retenu : un clin d’œil, une main frôlée, un rire étouffé.  
-Leur lien existe entre les silences.  
+2️⃣ Jan → Mars 2026 — Pré-production &amp; repérages
+• Gaffer + électros — repérages lac/clairière/café, contre-jours dorés vs gris/bleu.
+• Machinistes — trépied/slider, glissements lents; coordination drone.
+• Déco / accessoires — doublons objets “son” (cuillères, cartes, briquets) + continuité.
+• Costumes / HMC — 1990s au lac/clairière; 2010s au café; peau/eau flatteuses.
+• Régie sécurité eau — périmètre rive, couvertures, talkies; maître-nageur local.
 
-Le film avance comme une mémoire fragmentée.  
-Un été figé, sans drame apparent, mais traversé d’une tension invisible.  
-Fred raconte ce souvenir avec douceur, comme s’il cherchait à se rassurer.  
-« On s’est perdus de vue », dit-il.  
-Mais ses silences sont trop longs, ses yeux trop fixes.  
-Le son du lac revient dans sa tasse, la cuillère recommence à tourner :  
-c’est le passé qui insiste.  
+3️⃣ Févr 2026 — Tournage Café (Fred / Victor 50 ans)
+• Comédien : Frédéric Radepont — notes de jeu “souffle/cuillère, récit qui ment”.
+• Équipe image complète — lumière froide, reflet vert tasse.
+• Équipe son — proximité tasse/porcelaine, rumeur terrasse.
+• Régie — autorisation terrasse, habillage années 2010.
 
-Puis vient la nuit.  
-Victor est seul sur la rive.  
-Mathias, calme, se déshabille et entre dans le lac.  
-L’eau le recouvre lentement.  
-Victor reste immobile, comme vidé de lui-même.  
-Le bruit de l’eau s’étire, devient valse mélancolique.  
-C’est la musique du déni, du souvenir qui refuse de mourir.  
+4️⃣ Avril → Juin 2026 — Lac / Clairière (Maxime &amp; Antonin)
+• Comédiens : Maxime Dauney (Mathias), Antonin Pichon (Victor jeune) — tournage prévu mai-juin (Maxime 3 jours max).
+• Opérateur·rice drone certifié·e — Inspire 3 / X9, plans miroir &amp; aube.
+• Équipe son — hydrophones au lac, prises souffle/respiration, wildtracks herbes/campagne.
+• Régie — sécurité eau, serviettes/plaids, itinéraires accès.
 
-Retour au café.  
-Fred termine son histoire, voix presque éteinte :  
-« Je crois qu’il m’aime encore. »  
-Son regard se perd dans le vide.  
-Alors seulement, le spectateur comprend :  
-Mathias n’a jamais disparu.  
-Il est mort cette nuit-là.  
-Et depuis, Fred répète le récit pour ne plus s’en souvenir.  
-Le lac devient le miroir de son inconscient :  
-une surface calme où tout s’efface,  
-et où chaque mot prononcé le ramène au bord du vertige.  
+5️⃣ Juil → Août 2026 — Post-production
+• Monteur·se — rythme contemplatif, coupes guidées par le son/vent.
+• Sound designer / mix — souffle inversé, 5.1 + binaural; référence The Substance.
+• Étalonnage — été vert/or, hiver gris/bleu, diffusion douce.
+• Graphisme — affiche + teaser festivals.
 
-──────────────────────────────────────
-🎭 NOTE AU COMÉDIEN
-──────────────────────────────────────
+6️⃣ Sept → Déc 2026 — Festivals &amp; diffusion
+• Chargé·e de diffusion — DCP/ProRes, sous-titres.
+• Attaché·e de presse — presse locale &amp; culture.
+• Community manager — site + réseaux; teaser.
+• Festival Chéri Chéri — deadline : 31 août 2026 (à vérifier).</pre>
+          </div>
+        </details>
 
-Fred,  
-Victor à 50 ans n’explique pas son passé : il le rejoue à travers le récit.  
-Ce qu’il raconte est sincère pour lui, même si la vérité nous échappe.  
-Tu n’as pas à jouer la culpabilité — joue la sincérité d’un homme qui croit à son histoire,  
-même si cette histoire ment.  
+        <!-- BUDGET -->
+        <details class="grp" id="budget">
+          <summary>
+            <span class="file">le-lac-budget.txt</span>
+            <span class="pill hot">chiffrage</span>
+          </summary>
+          <div class="content">
+<pre>💶 BUDGET (3 jours — estimation 4,9–6,1 k€)
+────────────────────────────────────────────
 
-Ton texte est là pour amorcer la mémoire, pas pour la décrire.  
-Tu peux adapter tes mots, reformuler si besoin,  
-tant que la respiration et la musicalité restent intactes :  
-des phrases suspendues, calmes, parfois interrompues, comme une pensée qui cherche son équilibre.  
-Entre chaque phrase, le son et l’image prennent le relais.  
-Quand tu te tais, la valse commence.  
-C’est la mémoire sonore qui parle à ta place.  
+Image — caméra / optique / support : 700–1 050 €
+Drone — opérateur + Inspire 3 : 500–800 €
+Lumière — réflecteurs / diffusion + HMI : 300–500 €
+Son — F6, hydrophones, binaural, perche : 350–550 €
+Assurances — RC + matos : 250–380 €
+Régie — hébergements / repas : 700–1 050 €
+Transports — VL / péages : 220–360 €
+Autorisations — mairie / parc / café / drone : 120–220 €
+Défraiements — comédiens / tech : 500–800 €
+Post-prod — montage / mix / étalo : 900–1 200 €
+Imprévus (≈10 %) : 360–500 €
 
-Ta voix doit être douce, sans affect.  
-Presque comme si tu lisais une lettre à quelqu’un que tu n’as jamais envoyée.  
-Ta partenaire (au café) ne te juge pas, elle t’écoute —  
-mais son écoute t’oblige à te confronter à ce que tu fuis.  
-Tu lui parles, mais c’est à Mathias que tu réponds.  
+Total cible : 4,9 k€ → 6,1 k€</pre>
+          </div>
+        </details>
 
-Chaque retour à Paris est une respiration faussement paisible.  
-Le bruit du café agit comme un masque,  
-et derrière ce masque, tout remonte :  
-le vent du lac, la respiration, la valse.  
-Plus le film avance, plus ton langage se désagrège.  
-À la fin, les mots ne suffisent plus,  
-et c’est ton souffle, ton regard, et le son du monde qui terminent la phrase à ta place.  
-
-Tu n’as pas à tout dire.  
-Tu dois juste être présent au moment où le monde se met à parler pour toi.  
-
-──────────────────────────────────────
-🎞️ RÉFÉRENCES
-──────────────────────────────────────
-
-• Le Talentueux Mr Ripley (Anthony Minghella, 1999) — fascination amoureuse, beauté destructrice, duplicité émotionnelle.  
-• A Tale of Two Sisters (Kim Jee-woon, 2003) — structure mentale, souvenir réinventé, déni protecteur.  
-
-Le Lac s’inscrit entre ces deux lignes :  
-la passion qui ronge, et la mémoire qui ment pour continuer à vivre.  
-La valse mélancolique agit comme fil conducteur :  
-un mouvement cyclique, presque respiratoire, entre amour, perte et oubli.
-</pre>
-    </details>
-    <details style='margin:8px 0;padding:10px;border:1px solid #333;border-radius:10px;'>
-      <summary style='cursor:pointer;font-weight:bold;color:#4ea4ff'>le-lac-intro.txt</summary>
-      <pre style='white-space:pre-wrap'>🎬 LE LAC  
-un film de Vincent Letort  
-⚠️ NE PAS PARTAGER !!!
-</pre>
-    </details>
-    <details style='margin:8px 0;padding:10px;border:1px solid #333;border-radius:10px;'>
-      <summary style='cursor:pointer;font-weight:bold;color:#4ea4ff'>le-lac-le-film.txt</summary>
-      <pre style='white-space:pre-wrap'>🎬 LE FILM — LE LAC
-──────────────────────────────────────────────
-
-📖 SYNOPSIS  
-Victor, 50 ans, se souvient d&#x27;une journée particulière au lac où il a passé un week end avec Mathias. 
-le souvenir d’un été qui ne passe pas.  
-Une nuit, Mathias entre dans l’eau et ne remonte plus.
-Ici, le Son tient le récit, le silence avoue.
-
-──────────────────────────────────────────────
-🪶 SCÉNARIO &amp; INTENTION  
-*Le Lac* explore la **mémoire qui ment**.  
-Fred raconte un amour réécrit.  
-L’eau, le vent, le souffle, le tintement d’une cuillère guident la narration.  
-L’image respire ; le film doit pouvoir être *vu les yeux fermés.*
-
-• Années 1990 — Bord de lac / maison de vacances
-• Écriture : plans longs, gestes retenus, lumière qui respire
-</pre>
-    </details>
-    <details style='margin:8px 0;padding:10px;border:1px solid #333;border-radius:10px;'>
-      <summary style='cursor:pointer;font-weight:bold;color:#4ea4ff'>le-lac-note-technique.txt</summary>
-      <pre style='white-space:pre-wrap'>🎥 NOTE TECHNIQUE — LE LAC (révisée selon configuration Cité du Film)
-──────────────────────────────────────────────
-
-📸 IMAGE
-Caméra principale : Sony FX6 – plein format, rendu organique proche pellicule
-Objectifs : DZO Vespid T2.1 — 25 / 35 / 50 / 75 / 90 mm macro
-Format : 4K RAW — 1.85 — 25 fps
-Optiques clés par scène :
-• Bar (hiver) : 50–75 mm — intimité, chaleur de la flamme
-• Lac (été) : 35 mm — plan contemplatif, symétrie, silence
-• Clairière : 25 mm — vie, respiration, tension latente
-• Errance : 90 mm macro — matière, herbes, sang, isolement
-• Eau miroir : 35–50 mm — reflet, pureté, disparition
-• Final : 75 mm — flou poétique, introspection
-
-Drone complémentaire : DJI Inspire 3 (plans verticaux lents, symétrie lac).
-Mouvement : plans longs (10–20 s), glissements lents, cadres fixes traversés par le vent/l’eau.
-Lumière image : LUT douce DaVinci Resolve ; exposition fine ; flou poétique contrôlé.
-
-💡 LUMIÈRE
-Sources : Nanlite FS‑150B ×3 + réflecteurs Manfrotto ; panneau LED souple bicolore pour les intérieurs.
-Approche : Été vert/or (diffusion soie, contre‑jours légers) ; Hiver gris/bleu (contraste doux).
-Intention : beauté maîtrisée — peau, eau, matière, reflets, brume ; halo doré sur peau humide ; grain constant sans ostentation.
-
-🎧 SON
-Captation : MixPre‑6 II + micros DPA 2017 ; HF Deity pour dialogues ; Tentacle Sync ; casque HD25.
-Ambiances : hydrophones Aquarian ; binaural ; perche pour plans intérieurs.
-Grammaire : vent / souffle / eau / métal — morphing acoustique réel → mémoire.
-Mixage : Pro Tools + Neumann U87 + Genelec 5.1 ; 5.1 + binaural ; silence comme tension physique.
-
-🎬 ACCESSOIRES &amp; SÉCURITÉ
-Accessoires
-• Café (2015) : tasses porcelaine, cuillères métal, menu papier, smartphone noir, manteau, écharpe, journal.
-• Lac / Clairière (années 1990) : walkman, jeu de cartes, Zippo, bouteille verre, serviette, shorts 90s, sandales,
-  chemise à carreaux (Victor), t‑shirt blanc (Mathias).
-Technique : ND variable, polar, diffusion soie, SSD / V‑Lock, DIT 3‑2‑1, trépied, matte box, perche HF,
-  câbles étanches, gants néoprène, sacs étanches.
-Sécurité eau : talkies, périmètre rive, couvertures de survie, thermos, plaids, balises LED.
-Raccords : doublons objets “son” (cuillères, briquets, cartes) + photos continuité.
-
-🎞️ NOTE TECHNIQUE IMAGE — Filmer Mathias (Maxime)
-Intention : présence solaire plutôt que psychologie ; la caméra “tombe amoureuse” en silence.
-Caméra : 35 / 50 / 90 mm macro + drone Inspire 3 ; glissements lents ; aucun mouvement explicatif.
-Lumière : naturelle ; diffusion soie ; contre‑jour doux ; halo doré (soir) / bleu froid (nuit).
-Rythme &amp; montage : plans longs ; coupes guidées par le son et le vent ; chaque plan doit survivre seul.
-
-🔁 POST‑PRODUCTION
-Image : DaVinci Resolve Studio + Eizo CG319X — étalonnage doux et naturel.
-Son : Pro Tools + Neumann U87 + Genelec 5.1 — mix immersif et spatial.
-Master : 4K ProRes HQ + DCP 5.1 / binaural.
-</pre>
-    </details>
-    <details style='margin:8px 0;padding:10px;border:1px solid #333;border-radius:10px;'>
-      <summary style='cursor:pointer;font-weight:bold;color:#4ea4ff'>le-lac-notes-indexes.txt</summary>
-      <pre style='white-space:pre-wrap'>📎 ANNEXES — NOTES DU RÉALISATEUR (INTÉGRALES)
-──────────────────────────────────────────────
-
-🎥 LE LAC – NOTE TECHNIQUE IMAGE : FILMER MATHIAS (Maxime)
-Vincent Letort – Réalisation
-
-──────────────────────────────────────────────
-INTENTION GÉNÉRALE  
-Mathias (interprété par Maxime) n’est pas un “personnage dramatique” au sens traditionnel.  
-Il incarne une présence solaire, un état de lumière plus qu’une action.  
-La caméra ne doit jamais chercher à le “suivre” ou à “définir” son comportement,  
-mais à respirer avec lui, à le laisser exister dans le cadre.  
-🎯 Objectif : donner au spectateur l’impression que la caméra tombe amoureuse  en silence.  
-Tout dans la mise en image doit traduire cette fascination contenue, cette observation pudique.
-
-──────────────────────────────────────────────
-CAMÉRA &amp; MOUVEMENT  
-Optiques principales : 35 mm et 50 mm fixes, rendu doux et organique, proche du regard humain.  
-Plans larges sur le lac : drone vertical lent (Inspire 3 / Zenmuse X9).  
-Plans moyens : caméra épaule stabilisée, respiration humaine.  
-Plans serrés : macro 85 mm sur détails du corps, de l’eau, des gestes, sans érotisme forcé.  
-Mouvements : glissements, travellings circulaires très lents, cadres fixes traversés par vent ou eau.  
-Aucun mouvement explicatif — seulement la sensation d’une présence partagée.
-
-──────────────────────────────────────────────
-LUMIÈRE  
-Mathias doit toujours sembler baigné de lumière naturelle, sans contraste dur.  
-Beauté = respiration de la lumière, non contrôle.  
-Été : diffusion soie, réflecteurs or et argent doux.  
-Fin d’après-midi : contre-jour léger, halo doré sur peau humide.  
-Nuit : lumière bleue froide, liseré HMI pour isoler le corps du noir.  
-Paris (Fred) : lumière grise et étouffée — contraste avec le lac.  
-Le film entier doit respirer la mémoire du soleil — même quand il n’y en a plus.
-
-──────────────────────────────────────────────
-DISTANCE &amp; REGARD  
-La caméra ne pénètre jamais l’espace intime de Mathias : elle l’approche, puis le laisse repartir.  
-Filmer comme si on craignait de le déranger.  
-Victor le regarde, la caméra regarde Victor, puis parfois oublie Victor pour suivre Mathias.  
-Ce flottement crée la tension invisible du film.  
-Aucun regard caméra : Mathias ne “joue” pas, il existe. Il laisse la lumière faire.
-
-──────────────────────────────────────────────
-RYTHME &amp; MONTAGE  
-Plans longs (10–20 s), respirations naturelles.  
-Pas de champ/contrechamp psychologique.  
-Les coupes suivent le son et le vent, jamais l’action.  
-Chaque image doit pouvoir exister seule, comme une photo-souvenir.  
-Le montage doit préserver l’observation pudique : équilibre entre fascination et distance.
-
-──────────────────────────────────────────────
-EN RÉSUMÉ  
-Mathias est filmé comme une apparition familière, réelle mais déjà en train de disparaître.  
-La lumière le caresse, l’eau le reprend, le vent le relie au hors-champ sonore.  
-Rien n’est démonstratif, tout est écoute.  
-La caméra ne capture pas Maxime : elle l’accompagne, le traverse, puis le laisse redevenir lumière.
-</pre>
-    </details>
-    <details style='margin:8px 0;padding:10px;border:1px solid #333;border-radius:10px;'>
-      <summary style='cursor:pointer;font-weight:bold;color:#4ea4ff'>le-lac-plan-de-tournage.txt</summary>
-      <pre style='white-space:pre-wrap'>🎬 PLAN DE TOURNAGE — Organisation &amp; logistique (corrigé)
+        <!-- PLAN DE TOURNAGE -->
+        <details class="grp" id="plan-tournage">
+          <summary>
+            <span class="file">le-lac-plan-de-tournage.txt</span>
+            <span class="pill">table</span>
+          </summary>
+          <div class="content">
+<pre>🎬 PLAN DE TOURNAGE — Organisation &amp; logistique (corrigé)
 ────────────────────────────────────────────────────────
 
 ┌────────┬─────────────────────┬─────────────────────────────────────────────────────┬──────────────────────────────────────────────────────────────┬──────────────────────────────────────────────┬──────────────────────────────────────────────────────────────┬─────────────────────────────────────────────────────────────────────────────────────────────────────┐
 │ Jour   │ Lieu                │ Scènes / Plans                                      │ Acteurs                                                      │ Lumière / Moment                            │ Matériel principal                                        │ Notes                                                                                               │
 ├────────┼─────────────────────┼─────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┼──────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────┤
-│ K1     │ Café parisien       │ Scène Café (plans 1 à 5)                            │ Frédéric Radepont (Victor)                                   │ Hiver — lumière froide / matin voilé        │ 35 mm / 50 mm + diffusion douce + micro café                │ Prévoir autorisation terrasse, vapeur tasse visible, ambiance urbaine calme                        │
+│ K1     │ Café parisien       │ Scène Café (plans 1 à 5)                            │ Frédéric Radepont (Victor)                                   │ Hiver — lumière froide / matin voilé        │ 35 mm / 50 mm + diffusion douce + micro café                │ Autorisation terrasse, vapeur tasse visible, ambiance urbaine calme                                │
 ├────────┼─────────────────────┼─────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┼──────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────┤
-│ Jour 1 │ Champ / campagne    │ Traversée (plans 6 à 10)                            │ Maxime Dauney (Mathias)                                      │ Fin d’après-midi — jour court, contre-jour chaud │ Drone + 35 mm / 50 mm + ND + diff                        │ Prévoir herbes hautes, sécurité tiques, ref souffle                                               │
+│ Jour 1 │ Champ / campagne    │ Traversée (plans 6 à 10)                            │ Maxime Dauney (Mathias)                                      │ Fin d’après-midi — contre-jour chaud        │ Drone + 35 mm / 50 mm + ND + diff                           │ Herbes hautes, sécurité tiques, ref souffle                                                       │
 ├────────┼─────────────────────┼─────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┼──────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────┤
-│ Jour 2 │ Sous-bois → clairière│ Découverte de l’oiseau + partie de cartes (plans 11 à 20) │ Maxime Dauney (Mathias), Antonin Pichon (Victor jeune), + figurant │ Lumière fin de jour, diffusion 1/4, soleil tamisé │ 35 mm + 50 mm + macro 100 mm + réflecteurs              │ Plumes + jeu de cartes double + insectes décor ; lumière or organique                             │
+│ Jour 2 │ Sous-bois → clairière│ Oiseau + cartes (plans 11 à 20)                     │ Maxime Dauney, Antonin Pichon (+ figurant)                   │ Fin de jour, diffusion 1/4, soleil tamisé   │ 35 mm + 50 mm + macro 100 mm + réflecteurs                  │ Plumes + cartes double + continuité ; lumière or organique                                         │
 ├────────┼─────────────────────┼─────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┼──────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────┤
-│ Jour 3 │ Lac → rive → aube   │ Disparition + silence + retour café / drone aube (plans 21 à 35) │ Antonin Pichon &amp; Maxime Dauney (+ drone team)                 │ Golden hour → nuit bleue → aube grise / vent léger │ Drone Inspire 3 / X9, 35 mm / 50 mm ND + polar, Zoom H6 + LED soft │ Plan clé du film : prévoir répétition lumière + sécurité eau + post-VO “Je crois qu’il m’aime encore.” │
-└────────┴─────────────────────┴─────────────────────────────────────────────────────┴──────────────────────────────────────────────────────────────┴──────────────────────────────────────────────┴──────────────────────────────────────────────────────────────┴─────────────────────────────────────────────────────────────────────────────────────────────────────┘
-</pre>
-    </details>
-    <details style='margin:8px 0;padding:10px;border:1px solid #333;border-radius:10px;'>
-      <summary style='cursor:pointer;font-weight:bold;color:#4ea4ff'>le-lac-planning-benevoles.txt</summary>
-      <pre style='white-space:pre-wrap'>  📅 PLANNING DES BÉNÉVOLES — 4 jours de tournage *LE LAC*
+│ Jour 3 │ Lac → rive → aube   │ Disparition + retour café / drone aube (plans 21-35)│ Antonin Pichon &amp; Maxime Dauney (+ drone team)                 │ Golden hour → nuit bleue → aube grise       │ Inspire 3 / X9, 35/50 ND + polar, Zoom H6 + LED soft        │ Plan clé : répétition + sécurité eau + post-VO « Je crois qu’il m’aime encore. »                   │
+└────────┴─────────────────────┴─────────────────────────────────────────────────────┴──────────────────────────────────────────────────────────────┴──────────────────────────────────────────────┴──────────────────────────────────────────────────────────────┴─────────────────────────────────────────────────────────────────────────────────────────────────────┘</pre>
+          </div>
+        </details>
+
+        <!-- PLANNING BÉNÉVOLES -->
+        <details class="grp" id="planning-benevoles">
+          <summary>
+            <span class="file">le-lac-planning-benevoles.txt</span>
+            <span class="pill">logistique</span>
+          </summary>
+          <div class="content">
+<pre>📅 PLANNING DES BÉNÉVOLES — 4 jours de tournage LE LAC
 ──────────────────────────────────────────────────────────────
 
 ┌─────────────┬──────────────────────────────┬──────────────────────────────────────┬──────────────────────────────────────────────┬────────────────────────────────────────────────────────────────────────────────────┐
 │ Jour        │ Lieu principal               │ Acteurs concernés                    │ Équipe technique présente                    │ Tâches &amp; objectifs                                                                  │
 ├─────────────┼──────────────────────────────┼──────────────────────────────────────┼──────────────────────────────────────────────┼────────────────────────────────────────────────────────────────────────────────────┤
-│ Jour K —    │ Café parisien                │ Frédéric Radepont (Victor 50 ans)    │ Vincent Letort (réal / caméra)               │ Tournage scène “Café” : lumière froide • plan tasse • reflet vert • souffle •       │
-│ Hiver       │                              │                                      │ DoP / gaffer (1) • Ingé son (1) • Régie (1)  │ ambiance urbaine • Sauvegarde rushs • repérage sonore prologue                     │
+│ Jour K —    │ Café parisien                │ Frédéric Radepont (Victor 50 ans)    │ Vincent Letort (réal / caméra)               │ Tournage scène “Café” : lumière froide • plan tasse • reflet vert • souffle         │
+│ Hiver       │                              │                                      │ DoP / gaffer • Ingé son • Régie              │ Ambiance urbaine • Sauvegarde rushs • repérage sonore prologue                      │
 ├─────────────┼──────────────────────────────┼──────────────────────────────────────┼──────────────────────────────────────────────┼────────────────────────────────────────────────────────────────────────────────────┤
-│ Jour 1      │ Champ / campagne             │ Maxime Dauney (Mathias)              │ Vincent (réal / image) • DoP / gaffer        │ Scène “Traversée” : herbes hautes, vent, marche lente • plans macro main •        │
-│             │                              │                                      │ • Ingé son • Régie                           │ plan large drone • Son : souffle + frottement • Repérage lac soir                 │
+│ Jour 1      │ Champ / campagne             │ Maxime Dauney (Mathias)              │ Vincent (réal / image) • DoP / gaffer        │ Traversée : herbes hautes, vent • plans macro main • plan large drone               │
+│             │                              │                                      │ Ingé son • Régie                             │ Son : souffle + frottement • repérage lac soir                                       │
 ├─────────────┼──────────────────────────────┼──────────────────────────────────────┼──────────────────────────────────────────────┼────────────────────────────────────────────────────────────────────────────────────┤
-│ Jour 2      │ Sous-bois → clairière        │ Maxime Dauney, Antonin Pichon        │ Vincent (réal / image) • DoP • Ingé son •   │ Scène “Clairière / oiseau / cartes” • jeu silencieux • création tension Victor ↔  │
-│             │                              │ (+ figurant)                         │ Régie • Assistant mise en scène              │ Mathias • Plans 35 mm / macro 100 mm • enregistrement ambiances forêt             │
+│ Jour 2      │ Sous-bois → clairière        │ Maxime Dauney, Antonin Pichon        │ Vincent (réal / image) • DoP • Ingé son      │ Clairière / oiseau / cartes • tension Victor ↔ Mathias • ambiances forêt            │
+│             │                              │ (+ figurant)                         │ Régie • Assistant mise en scène              │ Plans 35 mm / macro • continuité props                                               │
 ├─────────────┼──────────────────────────────┼──────────────────────────────────────┼──────────────────────────────────────────────┼────────────────────────────────────────────────────────────────────────────────────┤
-│ Jour 3      │ Lac → rive → aube            │ Maxime Dauney &amp; Antonin Pichon       │ Vincent (réal / caméra) • DoP • Ingé son     │ Scène “Lac / disparition” • plans miroir, plongée, cri de froid/joie • Sécurité   │
-│             │                              │                                      │ (hydro) • Drone • Régie (sécurité eau)      │ eau • captation souffle inversé • drone aube + plan final voix off                │
-└─────────────┴──────────────────────────────┴──────────────────────────────────────┴──────────────────────────────────────────────┴────────────────────────────────────────────────────────────────────────────────────┘
+│ Jour 3      │ Lac → rive → aube            │ Maxime Dauney &amp; Antonin Pichon       │ Vincent (réal / caméra) • DoP • Ingé son     │ Lac / disparition : plans miroir, plongée • sécurité eau • drone aube + plan final  │
+│             │                              │                                      │ (hydro) • Drone • Régie                      │ Captation souffle inversé • voix off                                                  │
+└─────────────┴──────────────────────────────┴──────────────────────────────────────┴──────────────────────────────────────────────┴────────────────────────────────────────────────────────────────────────────────────┘</pre>
+          </div>
+        </details>
 
-🕓 Total équipe : 7 personnes max par jour (réal inclus).  
-🎧 Post-prod dès le lendemain : dérush, son, mix, teaser (1 semaine montage).
-</pre>
-    </details>
-    <details style='margin:8px 0;padding:10px;border:1px solid #333;border-radius:10px;'>
-      <summary style='cursor:pointer;font-weight:bold;color:#4ea4ff'>le-lac-planning-comediens.txt</summary>
-      <pre style='white-space:pre-wrap'>🎭 LE LAC — PLANNING COMÉDIENS
+        <!-- PLANNING COMÉDIENS -->
+        <details class="grp" id="planning-comediens">
+          <summary>
+            <span class="file">le-lac-planning-comediens.txt</span>
+            <span class="pill">dispos</span>
+          </summary>
+          <div class="content">
+<pre>🎭 LE LAC — PLANNING COMÉDIENS
 ──────────────────────────────────────────────
 
-──────────────────────────────────────────────
-🗓️ Rappel planning comédiens (à communiquer à l’équipe)
-──────────────────────────────────────────────
-• Maxime (Mathias) &amp; Victor jeune (Antonin Pichon) — tournage vidéo : **mai / juin 2026**.  
-• Victor âgé / Fred — tournage vidéo : **hiver 2026**.
-</pre>
-    </details>
-    <details style='margin:8px 0;padding:10px;border:1px solid #333;border-radius:10px;'>
-      <summary style='cursor:pointer;font-weight:bold;color:#4ea4ff'>le-lac-production.txt</summary>
-      <pre style='white-space:pre-wrap'>🧭 PRODUCTION — LE LAC
-──────────────────────────────────────────────
-
-🎨 Esthétique &amp; intention sensorielle
-Beauté maîtrisée : acteurs, lumière naturelle, plans épurés, eau comme matière mentale, fréquences chaleureuses.  
-Équilibre, fluidité, précision.  
-&gt; “Le film doit pouvoir être regardé les yeux fermés.”
-
-──────────────────────────────────────────────
-⚙️ Logistique
-• Lieu : Sillé-le-Guillaume (Sarthe) — extérieurs naturels (lac, clairière) + café réel  
-• Équipe : env. 12 pers. (chef op, 1er assistant, DIT, son binaural, perche, régie, drone, lumière, mise en scène)  
-• Déplacements : véhicules légers ; alternance extérieurs matin/fin de journée + post-captation son  
-• Autorisations : mairie, Parc Régional Normandie-Maine, accès lacustres, drone  
-• Hébergement &amp; régie : hébergement local ; eau/boissons chaudes ; déjeuners froids ; collations  
-• Écologie &amp; quiétude : respect des zones sensibles, discrétion sonore, tri
-</pre>
-    </details>
-    <details style='margin:8px 0;padding:10px;border:1px solid #333;border-radius:10px;'>
-      <summary style='cursor:pointer;font-weight:bold;color:#4ea4ff'>le-lac-references.txt</summary>
-      <pre style='white-space:pre-wrap'>🎞️ RÉFÉRENCES FILMIQUES &amp; MUSICALES — LE LAC
-──────────────────────────────────────────────
-
-🎬 Références cinématographiques  
-• *Le Talentueux Mr Ripley* — fascination, duplicité, meutre.
-• *A Tale of Two Sisters* — subjectivité du souvenir, réinvente son souvenir pour survivre 
-
-🔊 Référence sonore centrale  
-• *The Substance* (Coralie Fargeat) — traitement immersif et physique du son :  
-  textures organiques, dynamique, silence dramatique.  
-→ Repère principal pour le mixage et le design sonore, en volume.
-- Woob / Futur sound of London : futur ambient contemplative
-</pre>
-    </details>
-    <details style='margin:8px 0;padding:10px;border:1px solid #333;border-radius:10px;'>
-      <summary style='cursor:pointer;font-weight:bold;color:#4ea4ff'>le-lac-scenes-detaillees.txt</summary>
-      <pre style='white-space:pre-wrap'>🎬 1. BAR (hiver)
-
-Plan 1 — Plan fixe sur le verre, condensation, gouttes qui glissent lentement.
-
-Plan 2 — Gros plan : main de Victor (âgé) allumant le briquet, léger souffle sonore.
-
-Plan 3 — Reflet d’eau mouvante dans le miroir derrière le comptoir.
-
-Plan 4 — Contrechamp : visage de Victor, éclairé par la flamme.
-
-Plan 5 — Insert : flamme qui s’éteint, bruit du briquet amplifié, transition sonore vers l’eau.
-
-🌊 2. LAC (été)
-
-Plan 1 — Plan drone d’ensemble : lac immobile, seul Mathias nage.
-
-Plan 2 — Plan serré sur les épaules de Mathias qui émergent de l’eau.
-
-Plan 3 — Champ/contrechamp : Victor jeune observe depuis la berge.
-
-Plan 4 — Gouttes d’eau tombant au ralenti sur la surface — motif sonore.
-
-Plan 5 — Contre-plongée aquatique : Mathias sous l’eau, rayon de lumière.
-
-Plan 6 — Transition : plan fixe sur la berge vide, seul le bruit du vent reste.
-
-☁️ 3. BORD DU LAC
-
-Plan 1 — Plan moyen : Mathias torse nu se sèche, serviette blanche.
-
-Plan 2 — Victor tente d’allumer sa cigarette, le briquet refuse.
-
-Plan 3 — Mathias s’approche, sourit, allume pour lui.
-
-Plan 4 — Gros plan : flamme entre eux deux, chaleur qui vacille.
-
-Plan 5 — Plan serré sur leurs regards qui se croisent puis se fuient.
-
-🃏 4. CLAIRIÈRE
-
-Plan 1 — Plan large : trois jeunes autour d’une couverture, ambiance solaire.
-
-Plan 2 — Mains qui battent les cartes (motif sonore rythmique).
-
-Plan 3 — Rires, légèreté, une ombre passe sur le visage de Mathias.
-
-Plan 4 — Champ/contrechamp : Victor et Mathias, tension naissante.
-
-Plan 5 — Mathias se lève brusquement, part en silence.
-
-Plan 6 — Les cartes restent sur la couverture, battement feutré en écho.
-
-🌾 5. ERRANCE DE MATHIAS
-
-Plan 1 — Travelling lent : Mathias marche à travers les herbes hautes.
-
-Plan 2 — Insert : herbes caressées par ses doigts, souffle du vent.
-
-Plan 3 — Gros plan : oiseau mort, sang frais. Silence absolu.
-
-Plan 4 — Mathias s’immobilise, entend un bruit hors champ.
-
-Plan 5 — Caméra tremblée : il tourne la tête. Gros cut.
-
-
-
-🍸 6. RETOUR AU BAR
-
-Plan 1 — Même décor qu’ouverture : Victor, plus fatigué, verre vide.
-
-Plan 2 — Plan sur le miroir : silhouette floue passe derrière.
-
-Plan 3 — Gros plan sur le reflet du briquet.
-
-Plan 4 — Silhouette indistincte disparaît dans le reflet.
-
-Plan 5 — La flamme s’éteint lentement, fondu sonore vers silence.
-
-👕 7. MAGASIN DE FRIPES
-
-Plan 1 — Plan général du magasin de fripes, ambiance douce, lumière dorée.
-
-Plan 2 — Victor essaie une veste trop grande.
-
-Plan 3 — Mathias s’approche, ajuste le col, leurs visages se rapprochent.
-
-Plan 4 — Miroir : deux reflets, légèrement décalés.
-
-Plan 5 — Victor esquisse un sourire, gêné — mensonge en germe.
-
-💡 8. FÊTE
-
-Plan 1 — Flash stroboscopique, foule indistincte, musique saturée (Daft Punk &quot;Rolling And Scratching - like&quot;.
-
-Plan 2 — Mathias et Victor dansent enivrés, pas forcement ensembles, sourire sincère.
-
-Plan 3 — L&#x27;intru de la clairière s’approche de Mathias.
-
-Plan 4 — Ralenti : Victor observe, visage fermé.
-
-Plan 5 — Champ vide : Mathias a disparu dans la foule.
-
-Plan 6 — Écho sonore des basses — transition vers l’eau.
-
-🌫 9. EAU MIROIR
-
-Plan 1 — Plan large, symétrique parfait, lac calme sans vent.
-
-Plan 2 — Mathias entre lentement dans l’eau, silence complet.
-
-Plan 3 — Plan rapproché : reflet du ciel se déforme.
-
-Plan 4 — Plongée verticale : éclaboussures, immersion.
-
-Plan 5 — L’eau redevient lisse, silence.
-
-Plan 6 — Seul reste le miroir du ciel, fondu vers obscurité.
-
-⚫️ 10. FINAL
-
-Plan 1 — Retour au bar : Victor fixe son reflet.
-
-Plan 2 — Le miroir vacille, image double.
-
-Plan 3 — Fondu sonore : le souffle du lac revient.
-
-Plan 4 — La lumière s’éteint.
-
-Plan 5 — Écran noir, silence total.</pre>
-    </details>
-    <details style='margin:8px 0;padding:10px;border:1px solid #333;border-radius:10px;'>
-      <summary style='cursor:pointer;font-weight:bold;color:#4ea4ff'>le-lac-soundtrack.txt</summary>
-      <pre style='white-space:pre-wrap'>🎵 SOUNDTRACK — LE LAC
-──────────────────────────────────────────────
-
-Sélection de morceaux issus de la bande originale du film *LE LAC*,  
-composés et produits par **Vincent Bastille**.
-
-1. Vincent Bastille — Borderline (Final)  
-   → Thème principal du film, motif récurrent (briquet / souffle / miroir)
-
-2. Vincent Bastille — Lazare (générique de fin)  
-   → Fermeture du récit, fusion du son et du silence. Référence à la renaissance.
-
-3. Vincent Bastille — Sidreal (scène de sèches)  
-   → Rythme suspendu, respiration du film. Scène centrale (forêt / clairière).
-
-4. Vincent Bastille — Intro drone lac (Mathias)  
-   → Texture lente et profonde, thème de l’apparition de Mathias.
-
-──────────────────────────────────────────────
-🎧 Note d’écoute  
-Cliquez sur ▶️ dans la version interactive pour écouter chaque extrait.  
-(Aucun autoplay.)
-</pre>
-    </details>
-    <details style='margin:8px 0;padding:10px;border:1px solid #333;border-radius:10px;'>
-      <summary style='cursor:pointer;font-weight:bold;color:#4ea4ff'>le-lac-storyboard.txt</summary>
-      <pre style='white-space:pre-wrap'> 🧠 STORYBOARD — LE LAC
-──────────────────────────────────────────────
-
-🎞️ Scènes clés
-──────────────────────────────────────────────
-
-1️⃣ Scène 01 — Café (hiver)  
-Victor 50 ans, assis dehors. Buée sur la vitre, espresso, cigarette.  
-*Le tintement de la cuillère glisse vers le souffle du vent.*
-
-2️⃣ Scène 02 — Lac (drone vertical)  
-Drone vertical ; Mathias au centre du cadre, ride légère.  
-*Présence calme, l’eau est la matière du souvenir.*
-
-3️⃣ Scène 03 — Macro 85 mm  
-Gouttes sur la peau, reflets ; diffusion douce.  
-*Le corps devient paysage lumineux.*
-
-4️⃣ Scène 04 — Clairière (jeu de cartes)  
-Les deux assis en tailleur sur une couverture, rient et jouent.  
-*Rayon de soleil direct sur Mathias (cheveux très courts), caméra à hauteur de tête, 50 mm.*
-
-5️⃣ Scène 05 — Symétrie au couchant  
-Miroir parfait, vent nul ; la surface se brise doucement.  
-*Plan contemplatif, score en valse mélancolique.*
-</pre>
-    </details>
-    <details style='margin:8px 0;padding:10px;border:1px solid #333;border-radius:10px;'>
-      <summary style='cursor:pointer;font-weight:bold;color:#4ea4ff'>le-lac-todo-list.txt</summary>
-      <pre style='white-space:pre-wrap'>🎬 TO-DO LIST — LE LAC  
-(ordre chronologique &amp; prioritaire)
-──────────────────────────────────────────────
-
-1️⃣ PRÉPARATION IMMÉDIATE — NOVEMBRE / DÉCEMBRE 2025
-• Finaliser l’équipe technique complète (chef op, son, régie, maquillage, déco, drone).  
-• Confirmer la disponibilité de Frédéric Radepont et Maxime Dauney.  
-• Établir le plan de tournage complet dès que possible (priorité haute).  
-• Obtenir toutes les autorisations : mairie, Parc Normandie-Maine, drone, tournage lac.  
-• Réserver hébergements et véhicules — échéance : **15 décembre 2025**.  
-• Boucler le financement et dépôt dossier CNC + partenaires locaux — échéance : **30 décembre 2025**.  
-
-──────────────────────────────────────────────
-2️⃣ PRÉ-PRODUCTION — HIVER 2026
-• Tournage de Frédéric Radepont (Victor 50 ans) — scènes intérieures café — **février 2026**.  
-• Enregistrement sons ambiants (hiver, vent, intérieur) pour mixage futur.  
-• Préparation de la bande originale (Vincent Bastille) — maquettes + tests binauraux — **mars 2026**.  
-• Finaliser storyboard, shot-list et repérages précis avec chef op.  
-
-──────────────────────────────────────────────
-3️⃣ TOURNAGE PRINCIPAL — ÉTÉ 2026
-• Tournage de Maxime Dauney (Mathias) + Victor jeune — scènes lac / clairière — **mai-juin 2026 (3 jours max Impératifs Maxime).  
-• Captation drone Inspire 3 + plans symétriques du lac. (Réussite obligatoire. Temps de travail plus large.   
-• Prises son hydrophones + wildtracks nature.  
-• Prévoir 1 jour de secours météo.  
-
-──────────────────────────────────────────────
-4️⃣ POST-PRODUCTION — JUILLET → AOÛT 2026
-• Montage image &amp; son (mixage 5.1 + version binaurale).  
-• Étalonnage final + corrections lumière / drone.  
-• Création affiche + teaser pour festivals.  
-• Soumission du film au **Festival Chéri Chéri** — date limite : **31 août 2026** (à vérifier).  
-
-──────────────────────────────────────────────
-5️⃣ DIFFUSION — AUTOMNE 2026
-• Envoi du film finalisé aux festivals (CNC, Arte Shorts, Angers Premiers Plans, etc.).  
-• Préparer version sous-titrée et DCP pour projection.  
-• Organisation projection locale (Cité du Film / Créapolis / Le Mans).  
-
-© Spectra Media — *LE LAC*
-</pre>
-    </details></body></html>
+• Maxime (Mathias) &amp; Victor jeune (Antonin Pichon) — tournage vidéo : mai / juin 2026.  
+• Victor âgé / Fred — tournage vidéo : hiver 2026.</pre>
+          </div>
+        </details>
+
+        <!-- CAST -->
+        <details class="grp" id="cast">
+          <summary>
+            <span class="file">le-lac-cast.txt</span>
+            <span class="pill">casting</span>
+          </summary>
+          <div class="content">
+<pre>🎬 CAST — Distribution principale
+──────────────────────────────────
+
+Frédéric Radepont — Netflix / Canal+  
+Rôle : Victor âgé
+
+Maxime Dauney — Armani, Gucci (Success)  
+Rôle : Mathias
+
+Antonin Pichon —  
+Rôle : Victor jeune</pre>
+          </div>
+        </details>
+
+        <!-- CONTACTS -->
+        <details class="grp" id="contacts" open>
+          <summary>
+            <span class="file">le-lac-contact.txt</span>
+            <span class="pill">contact</span>
+          </summary>
+          <div class="content">
+<pre>📞 CONTACTS
+──────────────────────
+
+Vincent Letort  
+📧 vincentbastille100@gmail.com  
+📱 06 59 98 67 50</pre>
+          </div>
+        </details>
+
+        <!-- ACCESS -->
+        <details class="grp" id="access">
+          <summary>
+            <span class="file">access.txt</span>
+            <span class="pill sec">accès</span>
+          </summary>
+          <div class="content">
+<pre>email=vincentbastille100@gmail.com
+password=lac26</pre>
+          </div>
+        </details>
+
+      </section>
+
+      <footer class="foot">
+        <div>© Spectra Media — <span class="k">LE LAC</span> · dossier interne</div>
+        <div><span class="warn">⚠</span> confidentialité · export HTML</div>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    function openAll(){
+      document.querySelectorAll('details.grp').forEach(d => d.open = true);
+    }
+    function closeAll(){
+      document.querySelectorAll('details.grp').forEach(d => d.open = false);
+      // laisse intro visible en mobile (optionnel)
+      const intro = document.getElementById('intro');
+      if(intro) intro.open = true;
+    }
+  </script>
+</body>
+</html>
